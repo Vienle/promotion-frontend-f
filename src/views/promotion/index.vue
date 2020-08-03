@@ -1,16 +1,14 @@
 <template>
   <section>
-    <NavBar>hello</NavBar>
+    <nav-bar></nav-bar>
     <router-view></router-view>
   </section>
 </template>
 <script>
-import NavBar from './Navbar.vue'
+import NavBar from './../../components/Navbar.vue'
 export default {
   components:{
     NavBar
-  },
-  mounted(){
   }
 }
 </script>

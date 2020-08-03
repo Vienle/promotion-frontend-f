@@ -10,7 +10,7 @@
             required
             autofocus
             placeholder="StaffCode"
-            v-model="staffcode"
+            v-model="user.staffcode"
             >
         </div>
         <div class="form-group">
@@ -22,7 +22,7 @@
             autofocus
             class="form-control"
             placeholder="Password"
-            v-model="password"
+            v-model="user.password"
             >
         </div>
         <div class="form-group">
@@ -49,8 +49,8 @@ export default {
           method: 'post',
           url: 'http://localhost:8088/api/login',
           data:{
-            'staffcode' : this.staffcode,
-            'password' : this.password
+            'staffcode' : this.user.staffcode,
+            'password' : this.user.password
           }
         })
         .then((response) => {

@@ -5,26 +5,18 @@
         <a class="logo" @click="backtohome">
         <img src="./../assets/img/logo.jpg" alt="logo circlek" class="logo__img" />
       </a>
-      <input type="text" name="search" id="search" class="search" v-on:keyup.enter="search" v-model="itemcode"/>
       </div>
       <div class="user">
         <slot></slot>
         <button @click="logout">| Logout</button>
       </div>
-      <router-link to="/test">Promotion</router-link>
+      <router-link to="/circlek/promotion">Promotion</router-link>
     </header>
     <hr>
   </section>
 </template>
 <script>
-import Axios from 'axios';
 export default {
-  data(){
-    return{
-      itemcode : '',
-      datatable: ''
-    }
-  },
   methods:{
     logout(){
       localStorage.removeItem("token");
@@ -32,21 +24,18 @@ export default {
     },
     backtohome(){
       this.$router.replace('dashboard')
-    },
-    search(){
-      Axios({
-        method:'GET',
-        url: 'http://localhost:8088/api/get-all/search?itemcode=' + this.itemcode
-      }).then(response => {
-        this.datatable = response.data
-        this.$emit('dataSearch',response.data);
-        console.log(response.data)
-      })
     }
+    // search(){
+    //   Axios({
+    //     method:'GET',
+    //     url: 'http://localhost:8088/api/get-all/search?itemcode=' + this.itemcode
+    //   }).then(response => {
+    //     this.datatable = response.data
+    //     this.$emit('dataSearch',response.data);
+    //     console.log(response.data)
+    //   })
+    // }
   },
-  props:{
-    'dataSearch' : this.datatable
-  }
 }
 </script>
 <style lang="scss" scoped>
